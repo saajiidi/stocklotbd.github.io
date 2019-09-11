@@ -1,2 +1,2 @@
-# stocklotbd.github.io
+# stocklobd
  

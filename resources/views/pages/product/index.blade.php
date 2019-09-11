@@ -17,21 +17,23 @@
                     <div class="widget">
                         <h3>All Products<h3>
                             <div class="row">
-                                
+
                                 @foreach($products as $product)
-                                
-                                
+
+
                                 <div class="col-md-3">
                                     <div class="card">
 
                                     @php $i = 1; @endphp
                                         @foreach($product->images as $image)
-                                            @if($i > 1)
+                                           @if($i > 1)
                                           <img class="card-img-top featur-img" src="{{ asset('img/Products/'. '$image->image') }}" alt="Card image">
-                                            @endif
+                                             @endif
 
                                             @php $i--; @endphp
                                         @endforeach
+
+
                                              <div class="card-body">
                                                 <h4 class="card-title">
                                                  {{ $product->title }}
@@ -46,8 +48,8 @@
 
                                 @endforeach
 
-                               
-                            
+
+
 
 
 
