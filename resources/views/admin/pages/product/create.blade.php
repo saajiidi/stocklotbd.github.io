@@ -45,7 +45,7 @@
 
                                 <div class="form-group">
                                     <label for="image">Product Image</label>
-                                    <input type="file" class="form-control" name="image" >
+                                    <input type="file" class="form-control" name="product_image" >
 
                                 </div>
 
