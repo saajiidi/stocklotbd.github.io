@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    @yield('title', 'Laravel Ecommerce Project')
+    @yield('title', 'StockLotBd')
   </title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @include('frontend.partials.styles')
