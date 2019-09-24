@@ -3,7 +3,12 @@
 
 
     <a class="navbar-brand" href="{{ route('index') }}">
-      <img src="{{ asset('images/logo1.svg') }}" alt="">
+      <img src="{{ asset('images/stocklotbd.png') }}" alt="">
+     
+    </a>
+    <a class="navbar-brand" href="{{ route('index') }}">
+      
+      <h1 style:'text-align'>Stocklotbd</h1>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
