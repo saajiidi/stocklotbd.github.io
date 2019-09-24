@@ -78,10 +78,10 @@ class RegisterController extends Controller
       'last_name' => 'nullable|string|max:15',
       'email' => 'required|string|email|max:100|unique:users',
       'password' => 'required|string|min:6|confirmed',
-      'division_id' => 'nullable|numeric',
-      'district_id' => 'nullable|numeric',
-      'phone_no' => 'nullable|max:15',
-      'street_address' => 'nullable|max:100',
+      'division_id' => 'required|numeric',
+      'district_id' => 'required|numeric',
+      'phone_no' => 'required|max:15',
+      'street_address' => 'required|max:100',
     ]);
 
   }
