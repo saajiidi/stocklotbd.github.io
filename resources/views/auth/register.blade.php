@@ -82,8 +82,13 @@
               <div class="form-group row">
                 <label for="district_id" class="col-md-4 col-form-label text-md-right">District</label>
 
+                
                 <div class="col-md-6">
                   <select class="form-control" name="district_id" id="district-area">
+                      <option value="">Please select your district</option>
+                      @foreach ($districts as $district)
+                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                      @endforeach
                   </select>
                 </div>
               </div>
