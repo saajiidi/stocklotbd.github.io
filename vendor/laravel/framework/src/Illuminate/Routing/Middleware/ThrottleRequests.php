@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Support\InteractsWithTime;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Exceptions\ThrottleRequestsException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ThrottleRequests
 {
@@ -40,7 +40,7 @@ class ThrottleRequests
      * @param  int|string  $maxAttempts
      * @param  float|int  $decayMinutes
      * @return mixed
-     * @throws \Illuminate\Http\Exceptions\ThrottleRequestsException
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      */
     public function handle($request, Closure $next, $maxAttempts = 60, $decayMinutes = 1)
     {
@@ -99,7 +99,9 @@ class ThrottleRequests
             return sha1($route->getDomain().'|'.$request->ip());
         }
 
-        throw new RuntimeException('Unable to generate the request signature. Route unavailable.');
+        throw new RuntimeException(
+            'Unable to generate the request signature. Route unavailable.'
+        );
     }
 
     /**
@@ -107,7 +109,7 @@ class ThrottleRequests
      *
      * @param  string  $key
      * @param  int  $maxAttempts
-     * @return \Illuminate\Http\Exceptions\ThrottleRequestsException
+     * @return \Symfony\Component\HttpKernel\Exception\HttpException
      */
     protected function buildException($key, $maxAttempts)
     {
@@ -119,8 +121,8 @@ class ThrottleRequests
             $retryAfter
         );
 
-        return new ThrottleRequestsException(
-            'Too Many Attempts.', null, $headers
+        return new HttpException(
+            429, 'Too Many Attempts.', null, $headers
         );
     }
 

@@ -7,7 +7,7 @@
           {{-- <img src="/images/faces/face4.jpg" alt="image"/>  --}}
           <span class="online-status online"></span> </div>
         <div class="profile-name">
-          <p class="name">Richard V.Welsh</p>
+          <p class="name">Sajid-ul Islam</p>
           <p class="designation">Manager</p>
           <div class="badge badge-teal mx-auto mt-3">Online</div>
         </div>

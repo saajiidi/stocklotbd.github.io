@@ -2,15 +2,12 @@
 
 namespace Intervention\Image;
 
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
-
 abstract class AbstractColor
 {
     /**
      * Initiates color object from integer
      *
-     * @param  int $value
+     * @param  integer $value
      * @return \Intervention\Image\AbstractColor
      */
     abstract public function initFromInteger($value);
@@ -42,9 +39,9 @@ abstract class AbstractColor
     /**
      * Initiates color object from given R, G and B values
      *
-     * @param  int $r
-     * @param  int $g
-     * @param  int $b
+     * @param  integer $r
+     * @param  integer $g
+     * @param  integer $b
      * @return \Intervention\Image\AbstractColor
      */
     abstract public function initFromRgb($r, $g, $b);
@@ -52,9 +49,9 @@ abstract class AbstractColor
     /**
      * Initiates color object from given R, G, B and A values
      *
-     * @param  int $r
-     * @param  int $g
-     * @param  int $b
+     * @param  integer $r
+     * @param  integer $g
+     * @param  integer $b
      * @param  float   $a
      * @return \Intervention\Image\AbstractColor
      */
@@ -63,7 +60,7 @@ abstract class AbstractColor
     /**
      * Calculates integer value of current color instance
      *
-     * @return int
+     * @return integer
      */
     abstract public function getInt();
 
@@ -93,7 +90,7 @@ abstract class AbstractColor
      * Determines if current color is different from given color
      *
      * @param  AbstractColor $color
-     * @param  int           $tolerance
+     * @param  integer       $tolerance
      * @return boolean
      */
     abstract public function differs(AbstractColor $color, $tolerance = 0);
@@ -139,7 +136,7 @@ abstract class AbstractColor
                 break;
 
             default:
-                throw new NotReadableException(
+                throw new \Intervention\Image\Exception\NotReadableException(
                     "Color format ({$value}) cannot be read."
                 );
         }
@@ -175,7 +172,7 @@ abstract class AbstractColor
                 return $this;
 
             default:
-                throw new NotSupportedException(
+                throw new \Intervention\Image\Exception\NotSupportedException(
                     "Color format ({$type}) is not supported."
                 );
         }
@@ -219,7 +216,7 @@ abstract class AbstractColor
             $result[2] = ($matches[3] >= 0 && $matches[3] <= 255) ? intval($matches[3]) : 0;
             $result[3] = ($matches[4] >= 0 && $matches[4] <= 1) ? $matches[4] : 0;
         } else {
-            throw new NotReadableException(
+            throw new \Intervention\Image\Exception\NotReadableException(
                 "Unable to read color ({$value})."
             );
         }

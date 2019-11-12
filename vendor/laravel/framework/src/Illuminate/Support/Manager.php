@@ -51,17 +51,13 @@ abstract class Manager
      *
      * @param  string  $driver
      * @return mixed
-     *
-     * @throws \InvalidArgumentException
      */
     public function driver($driver = null)
     {
         $driver = $driver ?: $this->getDefaultDriver();
 
         if (is_null($driver)) {
-            throw new InvalidArgumentException(sprintf(
-                'Unable to resolve NULL driver for [%s].', static::class
-            ));
+            throw new InvalidArgumentException('Unable to resolve NULL driver for ['.get_class($this).'].');
         }
 
         // If the given driver has not been created before, we will create the instances

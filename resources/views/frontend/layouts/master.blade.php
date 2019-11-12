@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>
-    @yield('title', 'StockLotBd')
+    @yield('title', 'StockLotBD')
   </title>
+  <link rel="icon" href="{!! asset('images/stocklotbd.png') !!}"/>
+ 
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @include('frontend.partials.styles')
 </head>

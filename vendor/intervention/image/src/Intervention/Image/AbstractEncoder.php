@@ -2,9 +2,6 @@
 
 namespace Intervention\Image;
 
-use Intervention\Image\Exception\InvalidArgumentException;
-use Intervention\Image\Exception\NotSupportedException;
-
 abstract class AbstractEncoder
 {
     /**
@@ -31,7 +28,7 @@ abstract class AbstractEncoder
     /**
      * Output quality of encoder instance
      *
-     * @var int
+     * @var integer
      */
     public $quality;
     
@@ -89,7 +86,7 @@ abstract class AbstractEncoder
      *
      * @param  Image   $image
      * @param  string  $format
-     * @param  int     $quality
+     * @param  integer $quality
      * @return Image
      */
     public function process(Image $image, $format = null, $quality = null)
@@ -133,14 +130,7 @@ abstract class AbstractEncoder
                 break;
 
             case 'bmp':
-            case 'bmp':
-            case 'ms-bmp':
-            case 'x-bitmap':
-            case 'x-bmp':
-            case 'x-ms-bmp':
-            case 'x-win-bitmap':
-            case 'x-windows-bmp':
-            case 'x-xbitmap':
+            case 'image/bmp':
             case 'image/ms-bmp':
             case 'image/x-bitmap':
             case 'image/x-bmp':
@@ -170,7 +160,7 @@ abstract class AbstractEncoder
                 break;
                 
             default:
-                throw new NotSupportedException(
+                throw new \Intervention\Image\Exception\NotSupportedException(
                     "Encoding format ({$format}) is not supported."
                 );
         }
@@ -224,7 +214,7 @@ abstract class AbstractEncoder
     /**
      * Determines output quality
      *
-     * @param int $quality
+     * @param integer $quality
      */
     protected function setQuality($quality)
     {
@@ -232,7 +222,7 @@ abstract class AbstractEncoder
         $quality = $quality === 0 ? 1 : $quality;
 
         if ($quality < 0 || $quality > 100) {
-            throw new InvalidArgumentException(
+            throw new \Intervention\Image\Exception\InvalidArgumentException(
                 'Quality must range from 0 to 100.'
             );
         }

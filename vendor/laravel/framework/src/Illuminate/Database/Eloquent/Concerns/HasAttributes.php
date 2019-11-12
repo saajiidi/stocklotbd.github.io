@@ -411,9 +411,7 @@ trait HasAttributes
         $relation = $this->$method();
 
         if (! $relation instanceof Relation) {
-            throw new LogicException(sprintf(
-                '%s::%s must return a relationship instance.', static::class, $method
-            ));
+            throw new LogicException(get_class($this).'::'.$method.' must return a relationship instance.');
         }
 
         return tap($relation->getResults(), function ($results) use ($method) {
@@ -535,7 +533,7 @@ trait HasAttributes
      *
      * @param  string  $key
      * @param  mixed  $value
-     * @return mixed
+     * @return $this
      */
     public function setAttribute($key, $value)
     {
@@ -543,7 +541,9 @@ trait HasAttributes
         // which simply lets the developers tweak the attribute as it is set on
         // the model, such as "json_encoding" an listing of data for storage.
         if ($this->hasSetMutator($key)) {
-            return $this->setMutatedAttributeValue($key, $value);
+            $method = 'set'.Str::studly($key).'Attribute';
+
+            return $this->{$method}($value);
         }
 
         // If an attribute is listed as a "date", we'll convert it from a DateTime
@@ -578,18 +578,6 @@ trait HasAttributes
     public function hasSetMutator($key)
     {
         return method_exists($this, 'set'.Str::studly($key).'Attribute');
-    }
-
-    /**
-     * Set the value of an attribute using its mutator.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
-     */
-    protected function setMutatedAttributeValue($key, $value)
-    {
-        return $this->{'set'.Str::studly($key).'Attribute'}($value);
     }
 
     /**
