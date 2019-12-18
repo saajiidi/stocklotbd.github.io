@@ -22,6 +22,13 @@ class PagesController extends Controller
       return view('frontend.pages.contact');
     }
 
+    /* public function home()
+    {
+      return view('frontend.pages.home.home');
+    } */
+
+
+
     public function search(Request $request)
     {
       $search = $request->search;

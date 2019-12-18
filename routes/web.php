@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'Frontend\PagesController@index')->name('index');
+/* Route::get('/', 'Frontend\PagesController@home')->name('home'); */
 Route::get('/contact', 'Frontend\PagesController@contact')->name('contact');
 
 
